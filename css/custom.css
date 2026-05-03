@@ -1358,6 +1358,37 @@ section, nav, footer {
   margin-top: 0.25rem;
 }
 
+/* Unavailable overlay — covers the form with a blurred stamp */
+#contact-form {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-unavailable {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  background: rgba(0,0,0,0.20);
+  border-radius: inherit;
+}
+
+.contact-unavailable span {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: rotate(-18deg);
+  white-space: nowrap;
+  user-select: none;
+  color: var(--color-text-primary);
+  opacity: 0.45;
+}
+
 .contact-footer {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
