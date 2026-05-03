@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nuno Silva — Junior Full-Stack Developer Portfolio">
+  <title>Nuno Silva — Full-Stack Developer</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Nunito', 'sans-serif'] } } } }
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  </script>
+</head>
+
+<body class="font-sans">
+
+  <!-- ══════════════════════════════
+       NAVBAR
+       ══════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="nav-row" class="flex items-center justify-between h-16">
+
+        <!-- Logo: full name on desktop, initials on mobile -->
+        <a href="#hero" class="nav-logo text-primary">
+          <span class="desktop-name">Nuno Silva</span>
+          <span class="mobile-name">NS</span>
+          <span class="text-accent-green">.</span>
+        </a>
+
+        <!-- Desktop nav: icon + label -->
+        <div id="nav-links-container">
+          <div id="nav-indicator" aria-hidden="true"></div>
+          <a href="#skills"     class="nav-link" data-section="skills"><i class="fas fa-code"></i>Skills</a>
+          <a href="#projects"   class="nav-link" data-section="projects"><i class="fas fa-folder-open"></i>Projects</a>
+          <a href="#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase"></i>Experience</a>
+          <a href="#contact"    class="nav-link" data-section="contact"><i class="fas fa-paper-plane"></i>Contact</a>
+        </div>
+
+        <!-- Mobile nav: icon-only inline row -->
+        <div class="mobile-nav-icons">
+          <div id="mobile-nav-indicator" aria-hidden="true"></div>
+          <a href="#skills"     class="mobile-nav-icon" data-section="skills"     aria-label="Skills"><i class="fas fa-code"></i></a>
+          <a href="#projects"   class="mobile-nav-icon" data-section="projects"   aria-label="Projects"><i class="fas fa-folder-open"></i></a>
+          <a href="#experience" class="mobile-nav-icon" data-section="experience" aria-label="Experience"><i class="fas fa-briefcase"></i></a>
+          <a href="#contact"    class="mobile-nav-icon" data-section="contact"    aria-label="Contact"><i class="fas fa-envelope"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Fixed theme toggle — always visible top-right -->
+  <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+    <i id="theme-icon" class="fas fa-sun"></i>
+  </button>
+
+  <!-- ══════════════════════════════
+       HERO
+       ══════════════════════════════ -->
+  <section id="hero" class="page-section">
+    <div class="hero-wrapper">
+
+      <div class="hero-content">
+        <div class="hero-card-header">
+          <div class="hero-avatar-wrap">
+            <div class="avatar-ring">
+              <div class="avatar-size-large avatar-orb">
+                <img src="https://github.com/nuno2msilva.png" alt="Nuno Silva" class="avatar-photo">
+              </div>
+            </div>
+          </div>
+          <div class="hero-title-group">
+            <p class="hero-tagline text-accent-green">Hi, I'm</p>
+            <h1 class="hero-name text-primary">Nuno Silva</h1>
+            <p class="hero-role text-accent-green-soft">Junior Full-Stack Developer</p>
+          </div>
+        </div>
+        <p class="hero-bio text-secondary">
+          I write clean code, break things intentionally, and learn fast. Drawn to backend systems and infrastructure — building full-stack foundations one commit at a time.
+        </p>
+        <div class="hero-actions">
+          <a href="#skills"     class="glossy-btn-secondary"><i class="fas fa-code"></i><span class="btn-text">Skills</span></a>
+          <a href="#projects"   class="glossy-btn-secondary"><i class="fas fa-folder-open"></i><span class="btn-text">Projects</span></a>
+          <a href="#experience" class="glossy-btn-secondary"><i class="fas fa-briefcase"></i><span class="btn-text">Experience</span></a>
+          <a href="#contact"    class="glossy-btn-primary"><i class="fas fa-paper-plane"></i><span class="btn-text">Contact</span></a>
+        </div>
+      </div><!-- .hero-content -->
+
+      <div class="hero-scroll">
+        <a href="#skills" class="scroll-hint text-muted" aria-label="Scroll down">
+          <i class="fas fa-chevron-down scroll-hint-icon"></i>
+          <span class="scroll-hint-label">Scroll me!</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       SPLIT VIEW
+       Desktop: About sticky left | Sections scroll right
+       Mobile:  About hidden, sections full-width
+       ══════════════════════════════ -->
+  <div id="split-view">
+
+    <!-- ABOUT — sticky sidebar on desktop, hidden on mobile -->
+    <aside id="about" class="page-section">
+      <h2 class="section-title sidebar-title">About Me</h2>
+      <div class="about-inner">
+
+        <div class="glass-card">
+          <div class="about-header">
+            <div class="about-avatar">
+              <img src="https://github.com/nuno2msilva.png" alt="Nuno Silva" class="avatar-photo">
+            </div>
+            <div class="about-meta">
+              <p class="about-name text-primary">Nuno Silva</p>
+              <p class="about-detail text-accent-green"><i class="fas fa-map-marker-alt"></i>Faro, Portugal</p>
+              <p class="about-detail text-muted">Open to remote &amp; hybrid</p>
+            </div>
+            <div class="about-links">
+              <a href="https://github.com/nuno2msilva" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="mailto:nmsilva164@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+          <p class="about-text text-secondary">
+            Developer in the making with a bias toward <strong class="text-accent-green">backend systems, clean infrastructure, and things that actually run in production</strong>. Spent years in IT support and customer ops before the code side won.
+          </p>
+          <p class="about-text text-secondary">
+            Currently deep in a <strong class="text-accent-blue">1220-hour bootcamp at ETIC Algarve</strong> — frontend, backend, DevOps and everything in between.
+          </p>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-bubble"><span class="stat-number">1+</span><span class="stat-label">Dev Year</span></div>
+          <div class="stat-bubble"><span class="stat-number">18+</span><span class="stat-label">Repos</span></div>
+          <div class="stat-bubble"><span class="stat-number">7+</span><span class="stat-label">Pro Years</span></div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- RIGHT PANEL — scrollable sections -->
+    <div id="right-panel">
+
+      <!-- SKILLS -->
+      <section id="skills" class="page-section">
+        <h2 class="section-title">Tech Stack</h2>
+        <div class="section-inner">
+          <div class="two-col-grid">
+
+            <div class="glass-card">
+              <div class="skill-category-header">
+                <div class="skill-icon-background" style="background:linear-gradient(135deg,#ec4899,#a855f7)"><i class="fas fa-palette"></i></div>
+                <h3 class="text-primary">Frontend</h3>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag"><i class="devicon-html5-plain colored"></i>HTML</span>
+                <span class="skill-tag"><i class="devicon-css3-plain colored"></i>CSS</span>
+                <span class="skill-tag"><i class="devicon-javascript-plain colored"></i>JavaScript</span>
+                <span class="skill-tag"><i class="devicon-typescript-plain colored"></i>TypeScript</span>
+                <span class="skill-tag"><i class="devicon-react-original colored"></i>React</span>
+                <span class="skill-tag"><i class="devicon-nextjs-plain"></i>Next.js</span>
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <div class="skill-category-header">
+                <div class="skill-icon-background" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)"><i class="fas fa-server"></i></div>
+                <h3 class="text-primary">Backend</h3>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag"><i class="devicon-python-plain colored"></i>Python</span>
+                <span class="skill-tag"><i class="devicon-nodejs-plain colored"></i>Node.js</span>
+                <span class="skill-tag"><i class="devicon-django-plain colored"></i>Django</span>
+                <span class="skill-tag"><i class="fas fa-bolt" style="color:#009688"></i>FastAPI</span>
+                <span class="skill-tag"><i class="devicon-postgresql-plain colored"></i>PostgreSQL</span>
+                <span class="skill-tag"><i class="fas fa-database text-accent-blue"></i>SQL / NoSQL</span>
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <div class="skill-category-header">
+                <div class="skill-icon-background" style="background:linear-gradient(135deg,#10b981,#0d9488)"><i class="fas fa-cloud"></i></div>
+                <h3 class="text-primary">DevOps &amp; Cloud</h3>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag"><i class="devicon-docker-plain colored"></i>Docker</span>
+                <span class="skill-tag"><i class="devicon-linux-plain"></i>Linux</span>
+                <span class="skill-tag"><i class="devicon-bash-plain"></i>Shell</span>
+                <span class="skill-tag"><i class="devicon-kubernetes-plain colored"></i>Kubernetes</span>
+                <span class="skill-tag"><i class="devicon-terraform-plain colored"></i>Terraform</span>
+                <span class="skill-tag"><i class="fas fa-infinity text-accent-blue"></i>CI/CD</span>
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <div class="skill-category-header">
+                <div class="skill-icon-background" style="background:linear-gradient(135deg,#f59e0b,#f97316)"><i class="fas fa-wrench"></i></div>
+                <h3 class="text-primary">Tools &amp; Methods</h3>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag"><i class="devicon-git-plain colored"></i>Git</span>
+                <span class="skill-tag"><i class="devicon-github-original"></i>GitHub</span>
+                <span class="skill-tag"><i class="devicon-figma-plain colored"></i>Figma</span>
+                <span class="skill-tag"><i class="devicon-vscode-plain colored"></i>VS Code</span>
+                <span class="skill-tag"><i class="fas fa-vial" style="color:#a78bfa"></i>Testing</span>
+                <span class="skill-tag"><i class="fas fa-tasks" style="color:#34d399"></i>Agile/SCRUM</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="page-section">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-inner">
+          <div class="two-col-grid">
+
+            <div class="project-card glass-card">
+              <div class="project-banner" style="background:linear-gradient(135deg,#059669,#0d9488)">
+                <i class="fas fa-clone project-banner-icon"></i>
+                <span class="project-status-tag">Python · Web GUI</span>
+              </div>
+              <div class="project-body">
+                <h3 class="project-title text-primary">Dupligone</h3>
+                <p class="project-description text-secondary">Recursively scans directories for duplicate images and surfaces results in a clean browser-based GUI — built to scratch a very real itch.</p>
+                <div class="project-links">
+                  <a href="https://github.com/nuno2msilva/dupligone" target="_blank" class="project-link"><i class="fab fa-github"></i>Code</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card glass-card">
+              <div class="project-banner" style="background:linear-gradient(135deg,#3b82f6,#6366f1)">
+                <i class="fas fa-wallet project-banner-icon"></i>
+                <span class="project-status-tag">TypeScript · Personal</span>
+              </div>
+              <div class="project-body">
+                <h3 class="project-title text-primary">Pocket Keeper</h3>
+                <p class="project-description text-secondary">Personal finance organiser written in TypeScript — a hands-on dive into typed frontend development with a useful output.</p>
+                <div class="project-links">
+                  <a href="https://github.com/nuno2msilva/pocket-keeper" target="_blank" class="project-link"><i class="fab fa-github"></i>Code</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card glass-card">
+              <div class="project-banner" style="background:linear-gradient(135deg,#0891b2,#3b82f6)">
+                <i class="fas fa-bowl-rice project-banner-icon"></i>
+                <span class="project-status-tag">React · TypeScript</span>
+              </div>
+              <div class="project-body">
+                <h3 class="project-title text-primary">SushiDash</h3>
+                <p class="project-description text-secondary">Frontend II capstone at ETIC Algarve. React + TypeScript app covering component architecture, REST API integration, and full project lifecycle.</p>
+                <div class="project-links">
+                  <a href="https://github.com/nuno2msilva/etic-pw2426-frontend2-projeto" target="_blank" class="project-link"><i class="fab fa-github"></i>Code</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card glass-card">
+              <div class="project-banner" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">
+                <i class="fas fa-chart-pie project-banner-icon"></i>
+                <span class="project-status-tag">Personal · Finance</span>
+              </div>
+              <div class="project-body">
+                <h3 class="project-title text-primary">Monthly Expense Tracker</h3>
+                <p class="project-description text-secondary">A no-fluff tool for tracking and categorising monthly spending — built because the alternatives were either overkill or ugly.</p>
+                <div class="project-links">
+                  <a href="https://github.com/nuno2msilva/monthly-expense-tracker" target="_blank" class="project-link"><i class="fab fa-github"></i>Code</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="page-section">
+        <h2 class="section-title">Experience</h2>
+        <div class="section-inner">
+          <div class="timeline-wrap">
+            <div class="timeline-vertical-line"></div>
+
+            <div class="timeline-entry">
+              <div class="timeline-dot"></div>
+              <div class="glass-card">
+                <div class="timeline-header">
+                  <div>
+                    <h3 class="text-primary"><i class="fas fa-graduation-cap text-accent-green"></i>Full-Stack Web Dev Student</h3>
+                    <p class="timeline-organisation text-accent-green">ETIC Algarve · Faro</p>
+                  </div>
+                  <span class="timeline-badge">Oct 2024 – Jul 2026</span>
+                </div>
+                <p class="timeline-description text-secondary">Intensive 1220-hour professional programme covering frontend (HTML/CSS, JavaScript, React, Next.js), backend (Node.js, Python, Django, FastAPI, PostgreSQL), DevOps (Docker, Kubernetes, Terraform), and Agile methodologies.</p>
+                <div class="tag-row">
+                  <span class="experience-tag">React</span><span class="experience-tag">Python</span>
+                  <span class="experience-tag">Node.js</span><span class="experience-tag">Docker</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-dot" style="background:linear-gradient(135deg,#38bdf8,#818cf8);box-shadow:0 0 12px rgba(56,189,248,0.5)"></div>
+              <div class="glass-card">
+                <div class="timeline-header">
+                  <div>
+                    <h3 class="text-primary"><i class="fas fa-suitcase text-accent-blue"></i>Technical Helpdesk Specialist</h3>
+                    <p class="timeline-organisation text-accent-blue">Garrafeira Soares · Albufeira</p>
+                  </div>
+                  <span class="timeline-badge">May 2022 – Mar 2024</span>
+                </div>
+                <p class="timeline-description text-secondary">First-line IT support for company-issued devices across sales and hospitality environments. Managed 100+ user accounts and access protocols across multiple business systems, maintaining high operational availability.</p>
+                <div class="tag-row">
+                  <span class="experience-tag">IT Support</span><span class="experience-tag">Troubleshooting</span>
+                  <span class="experience-tag">Access Control</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-dot" style="background:linear-gradient(135deg,#67e8f9,#22d3ee);box-shadow:0 0 12px rgba(103,232,249,0.4)"></div>
+              <div class="glass-card">
+                <div class="timeline-header">
+                  <div>
+                    <h3 class="text-primary"><i class="fas fa-suitcase text-accent-blue"></i>Customer-Facing Roles</h3>
+                    <p class="timeline-organisation text-accent-blue">Hospitality &amp; Retail · Algarve</p>
+                  </div>
+                  <span class="timeline-badge">Aug 2015 – May 2022</span>
+                </div>
+                <p class="timeline-description text-secondary">Front Desk Clerk, Guest Concierge, and Checkout Operator across various companies. Gained hands-on experience with PMS and POS systems, and developed strong problem-solving and communication skills.</p>
+                <div class="tag-row">
+                  <span class="experience-tag">PMS / POS</span><span class="experience-tag">Customer Service</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-dot" style="background:linear-gradient(135deg,#fbbf24,#f97316);box-shadow:0 0 12px rgba(251,191,36,0.5)"></div>
+              <div class="glass-card">
+                <div class="timeline-header">
+                  <div>
+                    <h3 class="text-primary"><i class="fas fa-graduation-cap text-accent-amber"></i>Multimedia &amp; Design — Lv.4</h3>
+                    <p class="timeline-organisation" style="color:#f59e0b">Escola Secundária de Silves</p>
+                  </div>
+                  <span class="timeline-badge" style="background:linear-gradient(135deg,rgba(251,191,36,0.25),rgba(249,115,22,0.25))">Completed 2018</span>
+                </div>
+                <p class="timeline-description text-secondary">Vocational course at 12th-year level covering multimedia production and visual design fundamentals.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="page-section">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="contact-intro text-secondary">Open to collaboration, internships, and junior roles. Got something interesting? Let's talk.</p>
+        <div class="section-inner">
+          <div class="glass-card contact-card">
+            <form id="contact-form" novalidate>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="f-name">Name</label>
+                  <input id="f-name" type="text" name="name" class="form-input" placeholder="Your name" required>
+                  <span class="form-error" id="err-name">Please enter your name.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="f-email">Email</label>
+                  <input id="f-email" type="email" name="email" class="form-input" placeholder="your@email.com" required>
+                  <span class="form-error" id="err-email">Please enter a valid email.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="f-subject">Subject</label>
+                <input id="f-subject" type="text" name="subject" class="form-input" placeholder="What's this about?">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="f-message">Message</label>
+                <textarea id="f-message" name="message" rows="3" class="form-input form-textarea" placeholder="Tell me about your project or opportunity..." required></textarea>
+                <span class="form-error" id="err-message">Please write a message.</span>
+              </div>
+
+              <button type="submit" id="submit-btn" class="glossy-btn-primary submit-btn">
+                <i class="fas fa-paper-plane"></i>Send Message
+              </button>
+
+              <div id="form-success" class="hidden">
+                <div class="success-bubble">
+                  <i class="fas fa-check-circle success-bubble-icon text-accent-green"></i>
+                  <p class="success-title">Message sent!</p>
+                  <p class="success-subtitle text-secondary">I'll get back to you as soon as possible.</p>
+                </div>
+              </div>
+            </form>
+
+            <div class="contact-footer">
+              <a href="mailto:nmsilva164@gmail.com" class="social-link">
+                <i class="fas fa-envelope text-accent-green"></i><span>nmsilva164@gmail.com</span>
+              </a>
+              <a href="https://github.com/nuno2msilva" target="_blank" class="social-link">
+                <i class="fab fa-github text-secondary"></i><span>github.com/nuno2msilva</span>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-linkedin text-accent-blue"></i><span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /right-panel -->
+  </div><!-- /split-view -->
+
+  <footer class="site-footer">
+    <p class="text-muted">© 2026 Nuno Silva &mdash; Designed &amp; built with care</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
