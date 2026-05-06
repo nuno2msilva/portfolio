@@ -110,8 +110,8 @@ function initActiveNav() {
     scrollables.forEach(section => {
       if (window.scrollY >= section.offsetTop - 130) activeId = section.id;
     });
-    // About is desktop-only — never highlight it in any nav
-    if (activeId === 'about') activeId = 'hero';
+    // About is a sidebar on desktop (always visible) — don't highlight it there
+    if (activeId === 'about' && window.innerWidth >= 1024) activeId = 'hero';
     navLinks.forEach(link => link.classList.toggle('active', link.dataset.section === activeId));
   }
 
@@ -156,13 +156,35 @@ function createNavBubble({ containerEl, indicatorEl, links, getMetrics, initialD
     indicatorEl.style.width = to.width + 'px';
   }
 
-  // Move bubble immediately on click — in sync with the scroll animation
-  links.forEach(link => link.addEventListener('click', () => morphTo(link)));
+  // On click, snap the bubble immediately and lock it there while the page scrolls.
+  // Without this lock the MutationObserver would bounce the bubble through every
+  // intermediate section during a long jump (e.g. About → Contact).
+  let clickedLink  = null;
+  let clickTimeout = null;
 
-  // Also follow active section changes driven by scroll (catches keyboard nav, etc.)
+  links.forEach(link => link.addEventListener('click', () => {
+    clickedLink = link;
+    morphTo(link);
+    clearTimeout(clickTimeout);
+    // Safety-net: clear the lock after 1 s in case the target is never reached
+    clickTimeout = setTimeout(() => { clickedLink = null; }, 1000);
+  }));
+
+  // Follow active-section changes from scroll / keyboard,
+  // but hold position during a click-scroll to skip intermediate sections.
   const observer = new MutationObserver(() => {
     const active = links.find(l => l.classList.contains('active'));
-    if (active && active !== currentLink) morphTo(active);
+    if (!active || active === currentLink) return;
+    if (clickedLink) {
+      if (active === clickedLink) {
+        // Arrived — release the lock
+        clickedLink = null;
+        clearTimeout(clickTimeout);
+      } else {
+        return; // still en route, ignore intermediate sections
+      }
+    }
+    morphTo(active);
   });
   links.forEach(link => observer.observe(link, { attributes: true, attributeFilter: ['class'] }));
 
@@ -290,6 +312,22 @@ function initContactForm() {
   });
 }
 
+// ── Anchor scroll (URL stays static) ─────────────────
+// Single delegated listener on document catches every internal anchor click,
+// including clicks on icon children inside <a> tags. e.preventDefault() stops
+// the browser from ever writing a hash to the address bar.
+function initAnchorScroll() {
+  document.addEventListener('click', e => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
+    e.preventDefault();
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
 // ── Init ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -300,4 +338,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initFullPageScroll();
   initInteractions();
   initContactForm();
+  initAnchorScroll();
 });

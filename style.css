@@ -151,10 +151,13 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
+  line-height: 1.5;
 }
 
 body {
@@ -167,12 +170,20 @@ body {
   transition: background-color 0.5s ease, color 0.3s ease;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+img, svg { display: block; }
+
 section, nav, footer {
   position: relative;
   z-index: 1;
 }
 
-.hidden { display: none; }
+.hidden      { display: none; }
+.mobile-only { display: none !important; }
 
 /* Scrollbar */
 ::-webkit-scrollbar       { width: 6px; }
@@ -199,7 +210,6 @@ section, nav, footer {
 
 /* Theme-switch border transition — all elements with theme-sensitive borders */
 #about,
-.contact-footer,
 .site-footer { transition: border-color 0.3s ease; }
 
 
@@ -469,11 +479,29 @@ section, nav, footer {
    ═══════════════════════════════════════════════════════ */
 
 #navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
   overflow: visible;
 }
 
+.nav-inner {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px)  { .nav-inner { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px) { .nav-inner { padding-left: 2rem;   padding-right: 2rem;   } }
+
 /* Nav row is invisible until the user scrolls past the hero */
 #nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -698,16 +726,8 @@ section, nav, footer {
   padding: 2rem;
 }
 
-/* Avatar sits above the title group in a flex column (desktop default) */
-.hero-card-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 0;
-}
-
 .hero-avatar-wrap {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   display: flex;
   justify-content: center;
 }
@@ -731,16 +751,14 @@ section, nav, footer {
 .hero-role {
   font-size: clamp(1.125rem, 3vw, 1.5rem);
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.hero-bio {
-  font-size: clamp(0.9375rem, 2vw, 1.125rem);
-  line-height: 1.65;
-  margin-bottom: 2rem;
-  max-width: 36rem;
-  margin-left: auto;
-  margin-right: auto;
+.hero-social-links {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.75rem;
 }
 
 .hero-actions {
@@ -820,8 +838,7 @@ section, nav, footer {
   width: 100%;
 }
 
-.sidebar-title { text-align: left; }
-.sidebar-title::after { margin-left: 0; margin-right: auto; }
+/* sidebar-title inherits centered alignment from .section-title */
 
 .about-header {
   display: flex;
@@ -857,26 +874,17 @@ section, nav, footer {
   margin-bottom: 0.75rem;
 }
 
+.about-text { text-align: center; }
 .about-text:last-child { margin-bottom: 0; }
 
 /* Space the glass card away from the sidebar title */
 .about-inner .glass-card { margin-top: 1.5rem; }
 
-.social-icon {
-  color: var(--color-text-muted);
-  transition: color 0.20s ease, transform 0.20s ease;
-}
-
-.social-icon:hover {
-  color: var(--color-text-primary);
-  transform: translateY(-2px);
-}
-
 .stat-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
-  margin-top: 0.75rem;
+  margin-top: 1.25rem;
 }
 
 .stat-bubble {
@@ -917,6 +925,17 @@ section, nav, footer {
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
+
+.social-icon {
+  color: var(--color-text-muted);
+  transition: color 0.20s ease, transform 0.20s ease;
+}
+
+.social-icon:hover {
+  color: var(--color-text-primary);
+  transform: translateY(-2px);
+}
+
 
 /* Right panel — fills remaining width next to the about sidebar */
 #right-panel {
@@ -1316,34 +1335,6 @@ section, nav, footer {
 
 .form-error.visible { display: block; }
 
-#form-success { margin-top: 1.25rem; }
-
-.success-bubble {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 28px;
-  border-radius: 22px;
-  text-align: center;
-  background: rgba(5,150,105,0.14);
-  border: 1px solid rgba(5,150,105,0.28);
-}
-
-.success-bubble-icon {
-  font-size: 1.875rem;
-  margin-bottom: 0.5rem;
-}
-
-.success-title {
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
-
-.success-subtitle {
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
 /* Unavailable overlay — covers the form with a blurred stamp */
 #contact-form {
   position: relative;
@@ -1375,38 +1366,6 @@ section, nav, footer {
   opacity: 0.45;
 }
 
-.contact-footer {
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  border-top: 1px solid var(--color-card-border);
-}
-
-.social-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 7px 14px;
-  border-radius: 12px;
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
-  transition: color 0.20s ease, background 0.20s ease, transform 0.20s ease;
-}
-
-.social-link:hover {
-  color: var(--color-text-primary);
-  background: var(--color-nav-active-bg);
-  transform: translateY(-2px);
-}
 
 
 /* ═══════════════════════════════════════════════════════
@@ -1435,7 +1394,6 @@ section, nav, footer {
   #right-panel .page-section > .section-title,
   #right-panel .page-section > .contact-intro { padding-left: 1.5rem; padding-right: 1.5rem; }
 
-  .contact-footer { flex-direction: row; }
 }
 
 @media (min-width: 1024px) {
@@ -1483,9 +1441,42 @@ section, nav, footer {
     min-height: 100svh;
   }
 
-  /* Stack the split-view and hide the About sidebar entirely */
+  /* Stack the split-view; About becomes a full-width scrollable section */
   #split-view { display: block; }
-  #about      { display: none; }
+
+  /* Title pinned at top; card + bubbles centred in the remaining space */
+  #about {
+    display: flex;
+    width: 100%;
+    position: static;
+    top: auto;
+    height: auto;
+    overflow-y: visible;
+    border-right: none;
+    padding: 0 1rem 1rem;
+    justify-content: flex-start;
+  }
+
+  #about .about-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 4rem; /* offsets the title height so cards land at the visual centre */
+  }
+
+  #about .about-inner .glass-card { margin-top: 0; }
+
+  /* About header stacks vertically on mobile */
+  .about-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .about-meta  { text-align: center; }
+  .about-links { justify-content: center; }
 
   /* Remove extra top margin from content that follows section titles */
   .two-col-grid  { margin-top: 0; }
@@ -1501,6 +1492,7 @@ section, nav, footer {
     position: relative;
     justify-content: flex-start;
     padding-top: 88px;
+    min-height: 100svh;
   }
 
   .hero-wrapper {
@@ -1515,9 +1507,10 @@ section, nav, footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex: 1;
     width: 100%;
-    padding: 0.75rem 1.25rem 0;
+    padding: 0.75rem 1.25rem 4.5rem; /* bottom clears the scroll hint */
   }
 
   .hero-scroll {
@@ -1528,28 +1521,24 @@ section, nav, footer {
     margin-top: 0;
   }
 
-  /* Avatar pinned at the top */
-  .hero-card-header        { flex-shrink: 0; margin-bottom: 0; }
+  /* Hero header — column on mobile: avatar above, identity below */
+  .hero-header       { display: flex; flex-direction: column; align-items: center; width: 100%; flex-shrink: 0; }
+  .hero-avatar-wrap  { margin-bottom: 0.75rem; }
   #hero .avatar-size-large { width: 88px; height: 88px; }
-  .hero-avatar-wrap        { margin-bottom: 0; }
 
-  /* Text centered in the space below the avatar via flex auto-margins */
-  .hero-tagline { margin-top: auto; }
-  .hero-name    { font-size: clamp(1.75rem, 8vw, 2.5rem); margin-bottom: 0.25rem; }
-  .hero-role    { font-size: 0.9rem; margin-bottom: 0.75rem; }
-  .hero-bio     { font-size: 0.875rem; margin-bottom: 1rem; }
+  .hero-name         { font-size: clamp(1.75rem, 8vw, 2.5rem); margin-bottom: 0.25rem; }
+  .hero-role         { font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .hero-social-links { margin-bottom: 0.75rem; }
 
-  /* Hero action buttons — icon-only circles */
-  .hero-actions { flex-wrap: nowrap; gap: 0.625rem; margin-bottom: auto; }
-  .hero-actions .btn-text { display: none; }
+  .mobile-only { display: inline-flex !important; }
 
-  .hero-actions .glossy-btn-primary,
+  /* Hero action buttons — uniform icon-only circles */
+  .hero-actions                   { flex-wrap: nowrap; gap: 1rem; }
+  .hero-actions .btn-text         { display: none; }
   .hero-actions .glossy-btn-secondary {
     width: 44px; height: 44px;
     padding: 0; border-radius: 50%; flex-shrink: 0;
   }
-
-  .hero-actions .glossy-btn-primary i,
   .hero-actions .glossy-btn-secondary i { margin-right: 0; }
 
   /* Right-panel sections — title at top, content centred in remaining space */
@@ -1575,24 +1564,14 @@ section, nav, footer {
     margin-top: 0.5rem;
   }
 
-  /* Contact form — compact enough to fit one viewport */
-  .contact-card { padding: 0.75rem; }
-  .form-row     { gap: 0.625rem; margin-bottom: 0; }
-  .form-group   { margin-bottom: 0.5rem; }
-  .form-label   { font-size: 0.65rem; margin-bottom: 4px; }
-  .form-input   { padding: 8px 11px; font-size: 0.8rem; }
-  .submit-btn   { margin-top: 0.125rem; padding: 10px 20px; font-size: 0.875rem; }
-
-  .contact-footer {
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 0.625rem;
-    padding-top: 0.625rem;
-    gap: 1rem;
-  }
-
-  .contact-footer .social-link span { display: none; }
-  .contact-footer .social-link { padding: 6px 10px; }
+  /* Contact form — stacked layout for mobile */
+  .contact-card      { padding: 0.75rem; }
+  .form-row          { grid-template-columns: 1fr; gap: 0; margin-bottom: 0; }
+  .form-group        { margin-bottom: 0.5rem; }
+  .form-label        { font-size: 0.65rem; margin-bottom: 4px; }
+  .form-input        { padding: 8px 11px; font-size: 0.8rem; }
+  .form-textarea     { min-height: 7rem; }
+  .submit-btn        { margin-top: 0.125rem; padding: 10px 20px; font-size: 0.875rem; }
 }
 
 /* ── Tablet — swap desktop nav links for icon row (≤ 767px) ─── */

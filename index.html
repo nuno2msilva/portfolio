@@ -1,34 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" class="scroll-smooth">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Nuno Silva — Junior Full-Stack Developer Portfolio">
   <title>Nuno Silva — Full-Stack Developer</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Icon sets -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 
+  <!-- Restore saved theme before first paint to avoid flash -->
   <script>
-    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Nunito', 'sans-serif'] } } } }
     const saved = localStorage.getItem('portfolio-theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
   </script>
 </head>
 
-<body class="font-sans">
+<body>
 
-  <!-- ══════════════════════════════
+  <!-- ══════════════════════════════════════════
        NAVBAR
-       ══════════════════════════════ -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div id="nav-row" class="flex items-center justify-between h-16">
+       ══════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div id="nav-row">
 
         <!-- Logo: full name on desktop, initials on mobile -->
         <a href="#hero" class="nav-logo text-primary">
@@ -37,7 +41,7 @@
           <span class="text-accent-green">.</span>
         </a>
 
-        <!-- Desktop nav: icon + label -->
+        <!-- Desktop nav: icon + label links -->
         <div id="nav-links-container">
           <div id="nav-indicator" aria-hidden="true"></div>
           <a href="#skills"     class="nav-link" data-section="skills"><i class="fas fa-code"></i>Skills</a>
@@ -46,9 +50,10 @@
           <a href="#contact"    class="nav-link" data-section="contact"><i class="fas fa-paper-plane"></i>Contact</a>
         </div>
 
-        <!-- Mobile nav: icon-only inline row -->
+        <!-- Mobile nav: icon-only row (About is mobile-only) -->
         <div class="mobile-nav-icons">
           <div id="mobile-nav-indicator" aria-hidden="true"></div>
+          <a href="#about"      class="mobile-nav-icon" data-section="about"      aria-label="About"><i class="fas fa-user"></i></a>
           <a href="#skills"     class="mobile-nav-icon" data-section="skills"     aria-label="Skills"><i class="fas fa-code"></i></a>
           <a href="#projects"   class="mobile-nav-icon" data-section="projects"   aria-label="Projects"><i class="fas fa-folder-open"></i></a>
           <a href="#experience" class="mobile-nav-icon" data-section="experience" aria-label="Experience"><i class="fas fa-briefcase"></i></a>
@@ -59,19 +64,20 @@
     </div>
   </nav>
 
-  <!-- Fixed theme toggle — always visible top-right -->
+  <!-- Theme toggle — fixed top-right -->
   <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
     <i id="theme-icon" class="fas fa-sun"></i>
   </button>
 
-  <!-- ══════════════════════════════
-       HERO
-       ══════════════════════════════ -->
+
+  <!-- ══════════════════════════════════════════
+       HERO — avatar + greeting only
+       ══════════════════════════════════════════ -->
   <section id="hero" class="page-section">
     <div class="hero-wrapper">
 
       <div class="hero-content">
-        <div class="hero-card-header">
+        <div class="hero-header">
           <div class="hero-avatar-wrap">
             <div class="avatar-ring">
               <div class="avatar-size-large avatar-orb">
@@ -79,40 +85,49 @@
               </div>
             </div>
           </div>
-          <div class="hero-title-group">
+          <div class="hero-identity">
             <p class="hero-tagline text-accent-green">Hi, I'm</p>
             <h1 class="hero-name text-primary">Nuno Silva</h1>
             <p class="hero-role text-accent-green-soft">Junior Full-Stack Developer</p>
           </div>
         </div>
-        <p class="hero-bio text-secondary">
-          I write clean code, break things intentionally, and learn fast. Drawn to backend systems and infrastructure — building full-stack foundations one commit at a time.
-        </p>
+
+        <div class="hero-social-links">
+          <a href="https://github.com/nuno2msilva" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:nmsilva164@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+
         <div class="hero-actions">
+          <a href="#about"      class="glossy-btn-secondary mobile-only"><i class="fas fa-user"></i><span class="btn-text">About</span></a>
           <a href="#skills"     class="glossy-btn-secondary"><i class="fas fa-code"></i><span class="btn-text">Skills</span></a>
           <a href="#projects"   class="glossy-btn-secondary"><i class="fas fa-folder-open"></i><span class="btn-text">Projects</span></a>
           <a href="#experience" class="glossy-btn-secondary"><i class="fas fa-briefcase"></i><span class="btn-text">Experience</span></a>
-          <a href="#contact"    class="glossy-btn-primary"><i class="fas fa-paper-plane"></i><span class="btn-text">Contact</span></a>
+          <a href="#contact"    class="glossy-btn-secondary"><i class="fas fa-paper-plane"></i><span class="btn-text">Contact</span></a>
         </div>
-      </div><!-- .hero-content -->
+      </div>
 
       <div class="hero-scroll">
-        <a href="#skills" class="scroll-hint text-muted" aria-label="Scroll down">
+        <a href="#about" class="scroll-hint text-muted" aria-label="Scroll down">
           <i class="fas fa-chevron-down scroll-hint-icon"></i>
           <span class="scroll-hint-label">Scroll me!</span>
         </a>
       </div>
+
     </div>
   </section>
 
-  <!-- ══════════════════════════════
+
+  <!-- ══════════════════════════════════════════
        SPLIT VIEW
-       Desktop: About sticky left | Sections scroll right
-       Mobile:  About hidden, sections full-width
-       ══════════════════════════════ -->
+       Desktop : About sticky left | sections scroll right
+       Mobile  : About is a full dedicated section
+       ══════════════════════════════════════════ -->
   <div id="split-view">
 
-    <!-- ABOUT — sticky sidebar on desktop, hidden on mobile -->
+    <!-- ABOUT ─────────────────────────────────
+         Desktop : sticky left sidebar
+         Mobile  : full-width scrollable section  -->
     <aside id="about" class="page-section">
       <h2 class="section-title sidebar-title">About Me</h2>
       <div class="about-inner">
@@ -124,7 +139,7 @@
             </div>
             <div class="about-meta">
               <p class="about-name text-primary">Nuno Silva</p>
-              <p class="about-detail text-accent-green"><i class="fas fa-map-marker-alt"></i>Faro, Portugal</p>
+              <p class="about-detail text-accent-green"><i class="fas fa-map-marker-alt"></i> Faro, Portugal</p>
               <p class="about-detail text-muted">Open to remote &amp; hybrid</p>
             </div>
             <div class="about-links">
@@ -134,10 +149,13 @@
             </div>
           </div>
           <p class="about-text text-secondary">
-            Developer in the making with a bias toward <strong class="text-accent-green">backend systems, clean infrastructure, and things that actually run in production</strong>. Spent years in IT support and customer ops before the code side won.
+            Developer in the making with a bias toward
+            <strong class="text-accent-green">backend systems, clean infrastructure, and things that actually run in production</strong>.
+            Spent years in IT support and customer ops before the code side won.
           </p>
           <p class="about-text text-secondary">
-            Currently deep in a <strong class="text-accent-blue">1220-hour bootcamp at ETIC Algarve</strong> — frontend, backend, DevOps and everything in between.
+            Currently deep in a <strong class="text-accent-blue">1220-hour bootcamp at ETIC Algarve</strong>
+            — frontend, backend, DevOps and everything in between.
           </p>
         </div>
 
@@ -150,10 +168,12 @@
       </div>
     </aside>
 
-    <!-- RIGHT PANEL — scrollable sections -->
+
+    <!-- RIGHT PANEL — scrollable sections ──── -->
     <div id="right-panel">
 
-      <!-- SKILLS -->
+
+      <!-- SKILLS ──────────────────────────── -->
       <section id="skills" class="page-section">
         <h2 class="section-title">Tech Stack</h2>
         <div class="section-inner">
@@ -161,7 +181,9 @@
 
             <div class="glass-card">
               <div class="skill-category-header">
-                <div class="skill-icon-background" style="background:linear-gradient(135deg,#ec4899,#a855f7)"><i class="fas fa-palette"></i></div>
+                <div class="skill-icon-background" style="background:linear-gradient(135deg,#ec4899,#a855f7)">
+                  <i class="fas fa-palette"></i>
+                </div>
                 <h3 class="text-primary">Frontend</h3>
               </div>
               <div class="skill-tags">
@@ -176,7 +198,9 @@
 
             <div class="glass-card">
               <div class="skill-category-header">
-                <div class="skill-icon-background" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)"><i class="fas fa-server"></i></div>
+                <div class="skill-icon-background" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)">
+                  <i class="fas fa-server"></i>
+                </div>
                 <h3 class="text-primary">Backend</h3>
               </div>
               <div class="skill-tags">
@@ -191,7 +215,9 @@
 
             <div class="glass-card">
               <div class="skill-category-header">
-                <div class="skill-icon-background" style="background:linear-gradient(135deg,#10b981,#0d9488)"><i class="fas fa-cloud"></i></div>
+                <div class="skill-icon-background" style="background:linear-gradient(135deg,#10b981,#0d9488)">
+                  <i class="fas fa-cloud"></i>
+                </div>
                 <h3 class="text-primary">DevOps &amp; Cloud</h3>
               </div>
               <div class="skill-tags">
@@ -206,7 +232,9 @@
 
             <div class="glass-card">
               <div class="skill-category-header">
-                <div class="skill-icon-background" style="background:linear-gradient(135deg,#f59e0b,#f97316)"><i class="fas fa-wrench"></i></div>
+                <div class="skill-icon-background" style="background:linear-gradient(135deg,#f59e0b,#f97316)">
+                  <i class="fas fa-wrench"></i>
+                </div>
                 <h3 class="text-primary">Tools &amp; Methods</h3>
               </div>
               <div class="skill-tags">
@@ -215,7 +243,7 @@
                 <span class="skill-tag"><i class="devicon-figma-plain colored"></i>Figma</span>
                 <span class="skill-tag"><i class="devicon-vscode-plain colored"></i>VS Code</span>
                 <span class="skill-tag"><i class="fas fa-vial" style="color:#a78bfa"></i>Testing</span>
-                <span class="skill-tag"><i class="fas fa-tasks" style="color:#34d399"></i>Agile/SCRUM</span>
+                <span class="skill-tag"><i class="fas fa-tasks" style="color:#34d399"></i>Agile / SCRUM</span>
               </div>
             </div>
 
@@ -223,7 +251,8 @@
         </div>
       </section>
 
-      <!-- PROJECTS -->
+
+      <!-- PROJECTS ────────────────────────── -->
       <section id="projects" class="page-section">
         <h2 class="section-title">Projects</h2>
         <div class="section-inner">
@@ -289,7 +318,8 @@
         </div>
       </section>
 
-      <!-- EXPERIENCE -->
+
+      <!-- EXPERIENCE ──────────────────────── -->
       <section id="experience" class="page-section">
         <h2 class="section-title">Experience</h2>
         <div class="section-inner">
@@ -301,15 +331,17 @@
               <div class="glass-card">
                 <div class="timeline-header">
                   <div>
-                    <h3 class="text-primary"><i class="fas fa-graduation-cap text-accent-green"></i>Full-Stack Web Dev Student</h3>
+                    <h3 class="text-primary"><i class="fas fa-graduation-cap text-accent-green"></i> Full-Stack Web Dev Student</h3>
                     <p class="timeline-organisation text-accent-green">ETIC Algarve · Faro</p>
                   </div>
                   <span class="timeline-badge">Oct 2024 – Jul 2026</span>
                 </div>
                 <p class="timeline-description text-secondary">Intensive 1220-hour professional programme covering frontend (HTML/CSS, JavaScript, React, Next.js), backend (Node.js, Python, Django, FastAPI, PostgreSQL), DevOps (Docker, Kubernetes, Terraform), and Agile methodologies.</p>
                 <div class="tag-row">
-                  <span class="experience-tag">React</span><span class="experience-tag">Python</span>
-                  <span class="experience-tag">Node.js</span><span class="experience-tag">Docker</span>
+                  <span class="experience-tag">React</span>
+                  <span class="experience-tag">Python</span>
+                  <span class="experience-tag">Node.js</span>
+                  <span class="experience-tag">Docker</span>
                 </div>
               </div>
             </div>
@@ -319,14 +351,15 @@
               <div class="glass-card">
                 <div class="timeline-header">
                   <div>
-                    <h3 class="text-primary"><i class="fas fa-suitcase text-accent-blue"></i>Technical Helpdesk Specialist</h3>
+                    <h3 class="text-primary"><i class="fas fa-suitcase text-accent-blue"></i> Technical Helpdesk Specialist</h3>
                     <p class="timeline-organisation text-accent-blue">Garrafeira Soares · Albufeira</p>
                   </div>
                   <span class="timeline-badge">May 2022 – Mar 2024</span>
                 </div>
                 <p class="timeline-description text-secondary">First-line IT support for company-issued devices across sales and hospitality environments. Managed 100+ user accounts and access protocols across multiple business systems, maintaining high operational availability.</p>
                 <div class="tag-row">
-                  <span class="experience-tag">IT Support</span><span class="experience-tag">Troubleshooting</span>
+                  <span class="experience-tag">IT Support</span>
+                  <span class="experience-tag">Troubleshooting</span>
                   <span class="experience-tag">Access Control</span>
                 </div>
               </div>
@@ -337,14 +370,15 @@
               <div class="glass-card">
                 <div class="timeline-header">
                   <div>
-                    <h3 class="text-primary"><i class="fas fa-suitcase text-accent-blue"></i>Customer-Facing Roles</h3>
+                    <h3 class="text-primary"><i class="fas fa-suitcase text-accent-blue"></i> Customer-Facing Roles</h3>
                     <p class="timeline-organisation text-accent-blue">Hospitality &amp; Retail · Algarve</p>
                   </div>
                   <span class="timeline-badge">Aug 2015 – May 2022</span>
                 </div>
                 <p class="timeline-description text-secondary">Front Desk Clerk, Guest Concierge, and Checkout Operator across various companies. Gained hands-on experience with PMS and POS systems, and developed strong problem-solving and communication skills.</p>
                 <div class="tag-row">
-                  <span class="experience-tag">PMS / POS</span><span class="experience-tag">Customer Service</span>
+                  <span class="experience-tag">PMS / POS</span>
+                  <span class="experience-tag">Customer Service</span>
                 </div>
               </div>
             </div>
@@ -354,7 +388,7 @@
               <div class="glass-card">
                 <div class="timeline-header">
                   <div>
-                    <h3 class="text-primary"><i class="fas fa-graduation-cap text-accent-amber"></i>Multimedia &amp; Design — Lv.4</h3>
+                    <h3 class="text-primary"><i class="fas fa-graduation-cap text-accent-amber"></i> Multimedia &amp; Design — Lv.4</h3>
                     <p class="timeline-organisation" style="color:#f59e0b">Escola Secundária de Silves</p>
                   </div>
                   <span class="timeline-badge" style="background:linear-gradient(135deg,rgba(251,191,36,0.25),rgba(249,115,22,0.25))">Completed 2018</span>
@@ -367,12 +401,14 @@
         </div>
       </section>
 
-      <!-- CONTACT -->
+
+      <!-- CONTACT ─────────────────────────── -->
       <section id="contact" class="page-section">
         <h2 class="section-title">Get In Touch</h2>
         <p class="contact-intro text-secondary">Open to collaboration, internships, and junior roles. Got something interesting? Let's talk.</p>
         <div class="section-inner">
           <div class="glass-card contact-card">
+
             <form id="contact-form" novalidate>
               <div class="contact-unavailable">
                 <span>Temporarily Unavailable</span>
@@ -403,27 +439,18 @@
               </div>
 
               <button type="submit" id="submit-btn" class="glossy-btn-primary submit-btn" disabled>
-                <i class="fas fa-paper-plane"></i>Send Message
+                <i class="fas fa-paper-plane"></i> Send Message
               </button>
             </form>
 
-            <div class="contact-footer">
-              <a href="mailto:nmsilva164@gmail.com" class="social-link">
-                <i class="fas fa-envelope text-accent-green"></i><span>E-Mail</span>
-              </a>
-              <a href="https://github.com/nuno2msilva" target="_blank" class="social-link">
-                <i class="fab fa-github text-secondary"></i><span>GitHub</span>
-              </a>
-              <a href="#" class="social-link">
-                <i class="fab fa-linkedin text-accent-blue"></i><span>LinkedIn</span>
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
+
     </div><!-- /right-panel -->
   </div><!-- /split-view -->
+
 
   <footer class="site-footer">
     <p class="text-muted">© 2026 Nuno Silva &mdash; Designed &amp; built with care</p>
