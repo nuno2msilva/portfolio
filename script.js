@@ -146,26 +146,14 @@ function createNavBubble({ containerEl, indicatorEl, links, getMetrics, initialD
     if (!link || link === currentLink) return;
     if (!currentLink) { snapTo(link); return; }
 
-    const from = getMetrics(currentLink);
-    const to   = getMetrics(link);
+    const to = getMetrics(link);
     currentLink = link;
 
-    const goingRight   = to.left > from.left;
-    const stretchLeft  = goingRight ? from.left          : to.left;
-    const stretchRight = goingRight ? to.left + to.width : from.left + from.width;
-
-    // Phase 1: stretch toward target
-    indicatorEl.style.transition = 'left 0.14s ease-out, width 0.14s ease-out';
-    indicatorEl.style.left  = stretchLeft + 'px';
-    indicatorEl.style.width = (stretchRight - stretchLeft) + 'px';
-
-    // Phase 2: spring snap to exact size/position
-    setTimeout(() => {
-      indicatorEl.style.transition =
-        'left 0.26s cubic-bezier(0.34,1.56,0.64,1), width 0.26s cubic-bezier(0.34,1.56,0.64,1)';
-      indicatorEl.style.left  = to.left  + 'px';
-      indicatorEl.style.width = to.width + 'px';
-    }, 120);
+    // Direct spring slide — no intermediate stretch over other nav items
+    indicatorEl.style.transition =
+      'left 0.30s cubic-bezier(0.34,1.56,0.64,1), width 0.22s cubic-bezier(0.34,1.56,0.64,1)';
+    indicatorEl.style.left  = to.left  + 'px';
+    indicatorEl.style.width = to.width + 'px';
   }
 
   // Move bubble immediately on click — in sync with the scroll animation
