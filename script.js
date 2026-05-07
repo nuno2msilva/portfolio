@@ -87,8 +87,9 @@ function initTheme() {
     applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   });
 
-  // localStorage takes priority over any default set in HTML
-  applyTheme(localStorage.getItem('portfolio-theme') || 'dark');
+  // Saved preference → system preference → light
+  const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  applyTheme(localStorage.getItem('portfolio-theme') || system);
 }
 
 // ── Navbar scroll style ──────────────────────────────
