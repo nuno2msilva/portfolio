@@ -93,16 +93,16 @@ function initTheme() {
 
 // ── Navbar scroll style ──────────────────────────────
 function initNavbar() {
-  const navbar = document.getElementById('navbar');
+  const navbar = document.getElementById('navigation-bar');
   if (!navbar) return;
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 55);
   }, { passive: true });
 }
 
-// ── Active nav-link indicator ────────────────────────
+// ── Active navigation-link indicator ────────────────────────
 function initActiveNav() {
-  const navLinks    = document.querySelectorAll('.nav-link[data-section], .mobile-nav-icon[data-section]');
+  const navLinks    = document.querySelectorAll('.navigation-link[data-section], .mobile-navigation-icon[data-section]');
   const scrollables = Array.from(document.querySelectorAll('section[id], aside#about'));
 
   function updateActiveLink() {
@@ -196,9 +196,9 @@ function createNavBubble({ containerEl, indicatorEl, links, getMetrics, initialD
 }
 
 function initNavBubble() {
-  const containerEl = document.getElementById('nav-links-container');
-  const indicatorEl = document.getElementById('nav-indicator');
-  const links       = Array.from(document.querySelectorAll('.nav-link[data-section]'));
+  const containerEl = document.getElementById('navigation-links-container');
+  const indicatorEl = document.getElementById('navigation-indicator');
+  const links       = Array.from(document.querySelectorAll('.navigation-link[data-section]'));
 
   createNavBubble({
     containerEl,
@@ -214,9 +214,9 @@ function initNavBubble() {
 }
 
 function initMobileNavBubble() {
-  const containerEl = document.querySelector('.mobile-nav-icons');
-  const indicatorEl = document.getElementById('mobile-nav-indicator');
-  const links       = Array.from(document.querySelectorAll('.mobile-nav-icon[data-section]'));
+  const containerEl = document.querySelector('.mobile-navigation-icons');
+  const indicatorEl = document.getElementById('mobile-navigation-indicator');
+  const links       = Array.from(document.querySelectorAll('.mobile-navigation-icon[data-section]'));
 
   createNavBubble({
     containerEl,
@@ -234,7 +234,7 @@ function initMobileNavBubble() {
 // ── Interaction animations ───────────────────────────
 function initInteractions() {
   const rippleTargets = document.querySelectorAll(
-    '.nav-link, .glossy-btn-primary, .glossy-btn-secondary, .nav-logo'
+    '.navigation-link, .glossy-button-primary, .glossy-button-secondary, .navigation-logo'
   );
 
   rippleTargets.forEach(el => {
@@ -265,15 +265,15 @@ function initInteractions() {
 // ── Contact form ─────────────────────────────────────
 function initContactForm() {
   const form       = document.getElementById('contact-form');
-  const submitBtn  = document.getElementById('submit-btn');
+  const submitBtn  = document.getElementById('submit-button');
   const successBox = document.getElementById('form-success');
   if (!form) return;
 
   // Cache elements once — used for both validation and input listeners
   const fields = [
-    { input: document.getElementById('f-name'),    error: document.getElementById('err-name') },
-    { input: document.getElementById('f-email'),   error: document.getElementById('err-email') },
-    { input: document.getElementById('f-message'), error: document.getElementById('err-message') },
+    { input: document.getElementById('field-name'),    error: document.getElementById('error-name') },
+    { input: document.getElementById('field-email'),   error: document.getElementById('error-email') },
+    { input: document.getElementById('field-message'), error: document.getElementById('error-message') },
   ];
 
   function setFieldError(field, hasError) {

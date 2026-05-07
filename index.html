@@ -30,34 +30,33 @@
   <!-- ══════════════════════════════════════════
        NAVBAR
        ══════════════════════════════════════════ -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <div id="nav-row">
+  <nav id="navigation-bar">
+    <div class="navigation-inner">
+      <div id="navigation-row">
 
         <!-- Logo: full name on desktop, initials on mobile -->
-        <a href="#hero" class="nav-logo text-primary">
+        <a href="#hero" class="navigation-logo text-primary">
           <span class="desktop-name">Nuno Silva</span>
           <span class="mobile-name">NS</span>
-          <span class="text-accent-green">.</span>
         </a>
 
         <!-- Desktop nav: icon + label links -->
-        <div id="nav-links-container">
-          <div id="nav-indicator" aria-hidden="true"></div>
-          <a href="#skills"     class="nav-link" data-section="skills"><i class="fas fa-code"></i>Skills</a>
-          <a href="#projects"   class="nav-link" data-section="projects"><i class="fas fa-folder-open"></i>Projects</a>
-          <a href="#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase"></i>Experience</a>
-          <a href="#contact"    class="nav-link" data-section="contact"><i class="fas fa-paper-plane"></i>Contact</a>
+        <div id="navigation-links-container">
+          <div id="navigation-indicator" aria-hidden="true"></div>
+          <a href="#skills"     class="navigation-link" data-section="skills"><i class="fas fa-code"></i>Skills</a>
+          <a href="#projects"   class="navigation-link" data-section="projects"><i class="fas fa-folder-open"></i>Projects</a>
+          <a href="#experience" class="navigation-link" data-section="experience"><i class="fas fa-briefcase"></i>Experience</a>
+          <a href="#contact"    class="navigation-link" data-section="contact"><i class="fas fa-paper-plane"></i>Contact</a>
         </div>
 
         <!-- Mobile nav: icon-only row (About is mobile-only) -->
-        <div class="mobile-nav-icons">
-          <div id="mobile-nav-indicator" aria-hidden="true"></div>
-          <a href="#about"      class="mobile-nav-icon" data-section="about"      aria-label="About"><i class="fas fa-user"></i></a>
-          <a href="#skills"     class="mobile-nav-icon" data-section="skills"     aria-label="Skills"><i class="fas fa-code"></i></a>
-          <a href="#projects"   class="mobile-nav-icon" data-section="projects"   aria-label="Projects"><i class="fas fa-folder-open"></i></a>
-          <a href="#experience" class="mobile-nav-icon" data-section="experience" aria-label="Experience"><i class="fas fa-briefcase"></i></a>
-          <a href="#contact"    class="mobile-nav-icon" data-section="contact"    aria-label="Contact"><i class="fas fa-envelope"></i></a>
+        <div class="mobile-navigation-icons">
+          <div id="mobile-navigation-indicator" aria-hidden="true"></div>
+          <a href="#about"      class="mobile-navigation-icon" data-section="about"      aria-label="About"><i class="fas fa-user"></i></a>
+          <a href="#skills"     class="mobile-navigation-icon" data-section="skills"     aria-label="Skills"><i class="fas fa-code"></i></a>
+          <a href="#projects"   class="mobile-navigation-icon" data-section="projects"   aria-label="Projects"><i class="fas fa-folder-open"></i></a>
+          <a href="#experience" class="mobile-navigation-icon" data-section="experience" aria-label="Experience"><i class="fas fa-briefcase"></i></a>
+          <a href="#contact"    class="mobile-navigation-icon" data-section="contact"    aria-label="Contact"><i class="fas fa-envelope"></i></a>
         </div>
 
       </div>
@@ -65,7 +64,7 @@
   </nav>
 
   <!-- Theme toggle — fixed top-right -->
-  <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+  <button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle theme">
     <i id="theme-icon" class="fas fa-sun"></i>
   </button>
 
@@ -78,7 +77,7 @@
 
       <div class="hero-content">
         <div class="hero-header">
-          <div class="hero-avatar-wrap">
+          <div class="hero-avatar-wrapper">
             <div class="avatar-ring">
               <div class="avatar-size-large avatar-orb">
                 <img src="https://github.com/nuno2msilva.png" alt="Nuno Silva" class="avatar-photo">
@@ -99,11 +98,11 @@
         </div>
 
         <div class="hero-actions">
-          <a href="#about"      class="glossy-btn-secondary mobile-only"><i class="fas fa-user"></i><span class="btn-text">About</span></a>
-          <a href="#skills"     class="glossy-btn-secondary"><i class="fas fa-code"></i><span class="btn-text">Skills</span></a>
-          <a href="#projects"   class="glossy-btn-secondary"><i class="fas fa-folder-open"></i><span class="btn-text">Projects</span></a>
-          <a href="#experience" class="glossy-btn-secondary"><i class="fas fa-briefcase"></i><span class="btn-text">Experience</span></a>
-          <a href="#contact"    class="glossy-btn-secondary"><i class="fas fa-paper-plane"></i><span class="btn-text">Contact</span></a>
+          <a href="#about"      class="glossy-button-secondary mobile-only"><i class="fas fa-user"></i><span class="button-text">About</span></a>
+          <a href="#skills"     class="glossy-button-secondary"><i class="fas fa-code"></i><span class="button-text">Skills</span></a>
+          <a href="#projects"   class="glossy-button-secondary"><i class="fas fa-folder-open"></i><span class="button-text">Projects</span></a>
+          <a href="#experience" class="glossy-button-secondary"><i class="fas fa-briefcase"></i><span class="button-text">Experience</span></a>
+          <a href="#contact"    class="glossy-button-secondary"><i class="fas fa-paper-plane"></i><span class="button-text">Contact</span></a>
         </div>
       </div>
 
@@ -137,7 +136,7 @@
             <div class="about-avatar">
               <img src="https://github.com/nuno2msilva.png" alt="Nuno Silva" class="avatar-photo">
             </div>
-            <div class="about-meta">
+            <div class="about-metadata">
               <p class="about-name text-primary">Nuno Silva</p>
               <p class="about-detail text-accent-green"><i class="fas fa-map-marker-alt"></i> Faro, Portugal</p>
               <p class="about-detail text-muted">Open to remote &amp; hybrid</p>
@@ -159,10 +158,10 @@
           </p>
         </div>
 
-        <div class="stat-row">
-          <div class="stat-bubble"><span class="stat-number">1+</span><span class="stat-label">Dev Year</span></div>
-          <div class="stat-bubble"><span class="stat-number">18+</span><span class="stat-label">Repos</span></div>
-          <div class="stat-bubble"><span class="stat-number">7+</span><span class="stat-label">Pro Years</span></div>
+        <div class="statistics-row">
+          <div class="statistic-bubble"><span class="statistic-number">1+</span><span class="statistic-label">Dev Year</span></div>
+          <div class="statistic-bubble"><span class="statistic-number">18+</span><span class="statistic-label">Repos</span></div>
+          <div class="statistic-bubble"><span class="statistic-number">7+</span><span class="statistic-label">Pro Years</span></div>
         </div>
 
       </div>
@@ -177,7 +176,7 @@
       <section id="skills" class="page-section">
         <h2 class="section-title">Tech Stack</h2>
         <div class="section-inner">
-          <div class="two-col-grid">
+          <div class="two-column-grid">
 
             <div class="glass-card">
               <div class="skill-category-header">
@@ -256,7 +255,7 @@
       <section id="projects" class="page-section">
         <h2 class="section-title">Projects</h2>
         <div class="section-inner">
-          <div class="two-col-grid">
+          <div class="two-column-grid">
 
             <div class="project-card glass-card">
               <div class="project-banner" style="background:linear-gradient(135deg,#059669,#0d9488)">
@@ -323,7 +322,7 @@
       <section id="experience" class="page-section">
         <h2 class="section-title">Experience</h2>
         <div class="section-inner">
-          <div class="timeline-wrap">
+          <div class="timeline-wrapper">
             <div class="timeline-vertical-line"></div>
 
             <div class="timeline-entry">
@@ -416,29 +415,29 @@
 
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label" for="f-name">Name</label>
-                  <input id="f-name" type="text" name="name" class="form-input" placeholder="Your name" disabled>
-                  <span class="form-error" id="err-name">Please enter your name.</span>
+                  <label class="form-label" for="field-name">Name</label>
+                  <input id="field-name" type="text" name="name" class="form-input" placeholder="Your name" disabled>
+                  <span class="form-error" id="error-name">Please enter your name.</span>
                 </div>
                 <div class="form-group">
-                  <label class="form-label" for="f-email">Email</label>
-                  <input id="f-email" type="email" name="email" class="form-input" placeholder="your@email.com" disabled>
-                  <span class="form-error" id="err-email">Please enter a valid email.</span>
+                  <label class="form-label" for="field-email">Email</label>
+                  <input id="field-email" type="email" name="email" class="form-input" placeholder="your@email.com" disabled>
+                  <span class="form-error" id="error-email">Please enter a valid email.</span>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="f-subject">Subject</label>
-                <input id="f-subject" type="text" name="subject" class="form-input" placeholder="What's this about?" disabled>
+                <label class="form-label" for="field-subject">Subject</label>
+                <input id="field-subject" type="text" name="subject" class="form-input" placeholder="What's this about?" disabled>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="f-message">Message</label>
-                <textarea id="f-message" name="message" rows="3" class="form-input form-textarea" placeholder="Tell me about your project or opportunity..." disabled></textarea>
-                <span class="form-error" id="err-message">Please write a message.</span>
+                <label class="form-label" for="field-message">Message</label>
+                <textarea id="field-message" name="message" rows="3" class="form-input form-textarea" placeholder="Tell me about your project or opportunity..." disabled></textarea>
+                <span class="form-error" id="error-message">Please write a message.</span>
               </div>
 
-              <button type="submit" id="submit-btn" class="glossy-btn-primary submit-btn" disabled>
+              <button type="submit" id="submit-button" class="glossy-button-primary submit-button" disabled>
                 <i class="fas fa-paper-plane"></i> Send Message
               </button>
             </form>
