@@ -1,0 +1,150 @@
+/* variables.css — CSS custom properties
+   Dark: Retrowave Night · Light: Frutiger Aero */
+
+
+/* ── Dark theme — Retrowave Night ── */
+
+:root,
+[data-theme="dark"] {
+  --color-page-bg: #04000d;
+  --gradient-page-bg:
+    /* Neon horizon — the retrowave sunset burn */
+    radial-gradient(ellipse 130% 55% at 50% 112%,
+      #d4004e 0%, #90005c 16%, #520070 32%, transparent 52%),
+    /* Secondary pink bloom, offset left */
+    radial-gradient(ellipse 70% 30% at 20% 100%,
+      rgba(200,0,80,0.35) 0%, transparent 55%),
+    /* Cyan accent — top-right corner star */
+    radial-gradient(ellipse 38% 18% at 96% 4%,
+      rgba(0,210,255,0.12) 0%, transparent 55%),
+    /* Magenta accent — top-left corner */
+    radial-gradient(ellipse 30% 14% at 4% 6%,
+      rgba(255,45,120,0.10) 0%, transparent 50%),
+    /* Base sky — near-black at top, deepening into rich purple at bottom */
+    linear-gradient(to bottom,
+      #010003 0%, #04000a 12%, #090014 26%, #0f001e 40%,
+      #18002e 52%, #240040 62%, #200038 74%, #130024 86%, #07000f 100%);
+
+  --color-text-primary:      #ffffff;
+  --color-text-secondary:    rgba(255,255,255,0.72);
+  --color-text-muted:        rgba(255,255,255,0.40);
+  --color-text-active:       #ffffff;
+  --color-accent-green:      #ff2d78;
+  --color-accent-green-soft: #ff7eb3;
+  --color-accent-blue:       #00d4ff;
+  --color-accent-amber:      #bf5af2;
+
+  /* card-bg: used for bubble/tag elements — very transparent */
+  --color-card-bg:     rgba(255,255,255,0.04);
+  --color-card-border: rgba(255,100,230,0.18);
+  --color-card-shine:  rgba(255,255,255,0.16);
+  --shadow-card:       0 8px 32px rgba(150,0,100,0.18);
+
+  /* glass-bg: used for glass cards — slightly more opaque */
+  --color-glass-bg:     rgba(180,60,255,0.08);
+  --color-glass-border: rgba(255,100,230,0.20);
+
+  --color-navigation-bar-scrolled-bg:     rgba(13,1,24,0.82);
+  --color-navigation-bar-scrolled-border: rgba(255,45,120,0.14);
+
+  --color-navigation-link:              rgba(255,255,255,0.65);
+  --color-navigation-active-background: rgba(255,45,120,0.14);
+
+  --color-input-bg:           rgba(200,80,255,0.06);
+  --color-input-border:       rgba(200,100,255,0.20);
+  --color-input-focus-border: rgba(255,45,120,0.55);
+  --color-input-focus-ring:   rgba(255,45,120,0.12);
+  --color-input-placeholder:  rgba(255,255,255,0.28);
+
+  --color-timeline-start: rgba(255,45,120,0.70);
+  --color-timeline-end:   rgba(0,212,255,0.18);
+
+  --gradient-section-title-underline: linear-gradient(to right, #ff2d78, #00d4ff);
+  --glow-section-title:               0 0 12px rgba(255,45,120,0.55), 0 0 24px rgba(0,212,255,0.28);
+
+  --gradient-avatar-ring: linear-gradient(135deg, #ff2d78 0%, #bf5af2 50%, #00d4ff 100%);
+  --glow-avatar-ring:     0 0 22px rgba(255,45,120,0.40), 0 0 48px rgba(191,90,242,0.20);
+  --gradient-avatar-orb:  radial-gradient(circle at 36% 32%,
+    rgba(255,255,255,0.50) 0%, rgba(255,45,120,0.28) 38%, rgba(0,212,255,0.22) 100%);
+  --glow-avatar-orb:   0 0 28px rgba(255,45,120,0.25);
+  --glow-timeline-dot: 0 0 12px rgba(255,45,120,0.55);
+
+  --gradient-button-primary:       linear-gradient(135deg, #ff2d78 0%, #bf5af2 100%);
+  --shadow-button-primary:         0 4px 20px rgba(255,45,120,0.45);
+  --shadow-button-primary-hover:   0 8px 28px rgba(255,45,120,0.60);
+
+  --gradient-scrollbar-thumb: linear-gradient(to bottom,
+    rgba(255,45,120,0.65), rgba(0,212,255,0.65));
+
+  --gradient-navigation-bubble-shine: radial-gradient(circle at 35% 32%,
+    rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.18) 30%,
+    rgba(255,255,255,0.04) 55%, transparent 70%);
+}
+
+
+/* ── Light theme — Frutiger Aero ── */
+
+[data-theme="light"] {
+  --color-page-bg: #4E8EC4;
+  --gradient-page-bg:
+    radial-gradient(ellipse 100% 50% at 50% 120%,
+      #84C030 0%, #68AE1E 28%, transparent 52%),
+    radial-gradient(ellipse 46% 26% at 80% 6%,
+      rgba(255,255,255,0.72) 0%, rgba(240,252,255,0.20) 45%, transparent 65%),
+    linear-gradient(to bottom,
+      #2E6CAC 0%, #4488C0 14%, #66B4DA 32%, #96CCEC 48%,
+      #74BC34 53%, #509218 70%, #307410 86%, #1E5808 100%);
+
+  --color-text-primary:      #0a1f14;
+  --color-text-secondary:    rgba(10,31,20,0.74);
+  --color-text-muted:        rgba(10,31,20,0.44);
+  --color-text-active:       #ffffff;
+  --color-accent-green:      #059669;
+  --color-accent-green-soft: #047857;
+  --color-accent-blue:       #0284c7;
+  --color-accent-amber:      #d97706;
+
+  --color-card-bg:     rgba(255,255,255,0.52);
+  --color-card-border: rgba(255,255,255,0.82);
+  --color-card-shine:  rgba(255,255,255,0.68);
+  --shadow-card:       0 8px 32px rgba(0,70,40,0.16);
+
+  --color-glass-bg:     rgba(255,255,255,0.42);
+  --color-glass-border: rgba(255,255,255,0.65);
+
+  --color-navigation-bar-scrolled-bg:     rgba(10,90,70,0.74);
+  --color-navigation-bar-scrolled-border: rgba(255,255,255,0.28);
+
+  --color-navigation-link:              rgba(255,255,255,0.82);
+  --color-navigation-active-background: rgba(255,255,255,0.28);
+
+  --color-input-bg:           rgba(255,255,255,0.55);
+  --color-input-border:       rgba(255,255,255,0.72);
+  --color-input-focus-border: rgba(5,150,105,0.60);
+  --color-input-focus-ring:   rgba(5,150,105,0.15);
+  --color-input-placeholder:  rgba(10,31,20,0.32);
+
+  --color-timeline-start: rgba(5,150,105,0.80);
+  --color-timeline-end:   rgba(2,132,199,0.20);
+
+  --gradient-section-title-underline: linear-gradient(to right, #059669, #0284c7);
+  --glow-section-title:               0 0 12px rgba(5,150,105,0.50), 0 0 24px rgba(2,132,199,0.28);
+
+  --gradient-avatar-ring: linear-gradient(135deg, #34d399 0%, #0ea5e9 50%, #6366f1 100%);
+  --glow-avatar-ring:     0 0 22px rgba(52,211,153,0.45), 0 0 48px rgba(14,165,233,0.22);
+  --gradient-avatar-orb:  radial-gradient(circle at 36% 32%,
+    rgba(255,255,255,0.72) 0%, rgba(100,220,150,0.52) 38%, rgba(40,168,192,0.38) 100%);
+  --glow-avatar-orb:   0 0 28px rgba(100,220,150,0.38);
+  --glow-timeline-dot: 0 0 12px rgba(5,150,105,0.50);
+
+  --gradient-button-primary:       linear-gradient(135deg, #059669 0%, #0891b2 100%);
+  --shadow-button-primary:         0 4px 20px rgba(5,150,105,0.50);
+  --shadow-button-primary-hover:   0 8px 28px rgba(5,150,105,0.60);
+
+  --gradient-scrollbar-thumb: linear-gradient(to bottom,
+    rgba(5,150,105,0.65), rgba(2,132,199,0.65));
+
+  --gradient-navigation-bubble-shine: radial-gradient(circle at 35% 32%,
+    rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.35) 30%,
+    rgba(255,255,255,0.10) 55%, transparent 70%);
+}

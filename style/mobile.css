@@ -1,0 +1,389 @@
+/* mobile.css — @media (max-width: 1023px) */
+
+@media (max-width: 1023px) {
+
+  /* ── Background ── */
+
+  /* Viewport-locked gradient on iOS — fixed pseudo keeps it from scrolling */
+  body {
+    background-image: none;
+    background-color: transparent;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-page-bg);
+    background-image: var(--gradient-page-bg);
+  }
+
+  /* ── Scroll snap ── */
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 64px;
+  }
+
+  .page-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-top: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  /* Flatten split-view hierarchy so all page-sections are flat scroll-snap siblings.
+     display: contents removes the box but keeps DOM/CSS selectors intact. */
+  #split-view,
+  #right-panel {
+    display: contents;
+  }
+
+  /* ── Navigation ── */
+
+  #navigation-links-container { display: none; }
+
+  .mobile-navigation-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+    padding-right: 2.75rem;
+  }
+
+  .desktop-name { display: none; }
+  .mobile-name  { display: inline; }
+
+  /* ── Shared section layout ── */
+
+  .glass-card { padding: 0.875rem; }
+
+  /* Title always pinned to top — flex-shrink:0 prevents compression */
+  .section-title {
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .section-title::after { margin: 6px auto 0; }
+
+  /* ── About ── */
+
+  /* Overrides base: 38% width, sticky position, calc height, overflow-y:auto */
+  #about {
+    width: 100%;
+    position: static;
+    top: auto;
+    height: 100svh;
+    overflow: hidden;
+    padding: 0 1rem 1rem;
+  }
+
+  /* Fills space below the title and centres its content, mirroring .section-inner */
+  #about .about-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Overrides base margin-top: 1.5rem which would offset the centred group */
+  #about .about-inner .glass-card { margin-top: 0; }
+
+  .about-header { align-items: start; }
+
+  /* ── Right-panel sections ── */
+
+  /* Overrides base: calc(100vh-64px) min-height, padding: 3rem 0 */
+  #right-panel .page-section {
+    min-height: 100svh;
+    padding: 0 1rem 1.5rem;
+  }
+
+  /* Overrides base: max-width: 48rem, padding: 0 1rem */
+  #right-panel .page-section > .section-title,
+  #right-panel .page-section > .contact-intro {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Natural height + auto margins reliably centres within the flex column */
+  #right-panel .page-section .section-inner {
+    flex: none;
+    padding: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  /* ── Hero ── */
+
+  #hero {
+    position: relative;
+    justify-content: flex-start;
+    padding-top: 88px;
+    min-height: 100svh;
+  }
+
+  .hero-wrapper {
+    min-height: calc(100svh - 88px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    padding: 0.5rem 1.25rem 1rem;
+  }
+
+  /* Top half — avatar + identity + social, centred */
+  .hero-intro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .hero-scroll { display: none; }
+
+  .hero-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-avatar-wrapper { margin-bottom: 0.5rem; }
+
+  #hero .avatar-large {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-name {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-role        { font-size: 0.875rem; margin-bottom: 0; }
+  .hero-social-links { margin-bottom: 0; }
+  .mobile-only      { display: flex !important; }
+
+  /* Bottom half — 5-row navigation menu, centred */
+  .hero-actions {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .hero-actions .button-text { display: inline; }
+
+  /* Restore desktop pill values overridden by the global mobile button rule */
+  .hero-actions .glossy-button-secondary {
+    width: min(100%, 20rem);
+    padding: 0.75rem 1.75rem;
+    font-size: 0.9375rem;
+    justify-content: center;
+  }
+
+  /* ── Skills ── */
+
+  .two-column-grid {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+    gap: 0.75rem;
+  }
+
+  .skill-category-header {
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-icon-background {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  .skill-tag {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.68rem;
+  }
+
+  /* ── Projects ── */
+
+  /* Left half: horizontal banner. Right half: title + tech. Bottom: description. */
+  .project-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "banner body"
+      "desc   desc";
+    padding: 0;
+  }
+
+  .project-banner {
+    grid-area: banner;
+    height: 100%;
+    min-height: 5.5rem;
+    border-radius: 0;
+  }
+
+  .project-body {
+    grid-area: body;
+    padding: 0.65rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .project-title {
+    font-size: 0.82rem;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .project-status-tag {
+    font-size: 0.62rem;
+    margin-bottom: 0;
+    align-self: flex-end;
+    text-align: right;
+  }
+
+  .project-description {
+    grid-area: desc;
+    font-size: 0.71rem;
+    line-height: 1.45;
+    padding: 0.4rem 0.75rem 0.65rem;
+  }
+
+  /* ── Experience ── */
+
+  /* Taller than one viewport — clip to 100svh so one swipe reaches Contact */
+  #experience {
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  #experience .glass-card    { padding: 0.5rem 0.75rem; }
+  #experience .glass-card h3 { font-size: 0.82rem; }
+
+  #experience .timeline-header {
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  #experience .timeline-organisation { font-size: 0.74rem; }
+
+  #experience .timeline-description {
+    font-size: 0.70rem;
+    line-height: 1.45;
+    margin-bottom: 0.3rem;
+  }
+
+  #experience .timeline-badge {
+    font-size: 0.60rem;
+    padding: 0.1rem 0.45rem;
+  }
+
+  #experience .tag-row       { gap: 0.2rem; }
+
+  #experience .experience-tag {
+    font-size: 0.58rem;
+    padding: 0.1rem 0.375rem;
+  }
+
+  #experience .timeline-entry { margin-bottom: 0.5rem; }
+
+  /* Dot centre kept on the vertical line (line at 15px from wrapper left) */
+  #experience .timeline-dot {
+    width: 12px;
+    height: 12px;
+    top: 11px;
+    left: -22px;
+    border-width: 2px;
+  }
+
+  .timeline-wrapper { margin-top: 0; }
+
+  /* ── Contact ── */
+
+  .contact-intro {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .contact-card { padding: 0.75rem; }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  .form-group  { margin-bottom: 0.5rem; }
+
+  .form-label {
+    font-size: 0.65rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .form-input {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .form-textarea { min-height: 7rem; }
+
+  .submit-button {
+    margin-top: 0.125rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .glossy-button-primary,
+  .glossy-button-secondary {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  /* ── Footer ── */
+
+  .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 45;
+    border-top: none;
+    background: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .site-footer.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #contact { padding-bottom: 2.5rem; }
+
+}

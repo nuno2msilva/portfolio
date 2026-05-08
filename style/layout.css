@@ -1,0 +1,425 @@
+/* layout.css — Navigation, hero, split view, page sections */
+
+
+/* ── Navigation bar ── */
+
+#navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  overflow: visible;
+}
+
+.navigation-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+#navigation-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+#navigation-bar.scrolled #navigation-row {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#navigation-bar.scrolled {
+  background: var(--color-navigation-bar-scrolled-bg);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border-bottom: 1px solid var(--color-navigation-bar-scrolled-border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.24);
+}
+
+.navigation-logo {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 900;
+  font-size: 1.125rem;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  /* bubble membrane: nearly transparent, visible border, no frosting */
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.22);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.20s ease, transform 0.20s ease;
+}
+
+.navigation-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.20), transparent);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.navigation-logo:hover {
+  background: rgba(255,255,255,0.10);
+  animation: bubble-pop 0.32s ease forwards;
+}
+
+#navigation-links-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.navigation-link {
+  color: var(--color-navigation-link);
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 7px 14px;
+  border-radius: 9999px;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  transition: color 0.20s ease, text-shadow 0.20s ease;
+}
+
+.navigation-link:hover {
+  color: var(--color-text-active);
+  text-shadow: 0 0 8px var(--color-accent-green), 0 0 18px var(--color-accent-green);
+}
+
+.navigation-link.active {
+  color: var(--color-text-active);
+  text-shadow: none;
+}
+
+/* Morphing bubble — positioned by JS */
+#navigation-indicator,
+#mobile-navigation-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 9999px;
+  /* soap-bubble membrane: almost transparent fill + thin visible border */
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.22);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+}
+
+#navigation-indicator {
+  height: 34px;
+}
+
+#mobile-navigation-indicator {
+  height: 38px;
+}
+
+#navigation-indicator::before,
+#mobile-navigation-indicator::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  /* strong top crescent — the main visual cue of a bubble */
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,0.30) 0%,
+    rgba(255,255,255,0.06) 50%,
+    transparent 100%);
+  pointer-events: none;
+}
+
+.mobile-navigation-icons {
+  display: none;
+  position: relative;
+}
+
+.mobile-navigation-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--color-navigation-link);
+  font-size: 0.9rem;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  transition: color 0.20s ease;
+}
+
+.mobile-navigation-icon:hover,
+.mobile-navigation-icon.active {
+  color: var(--color-text-active);
+}
+
+.mobile-name {
+  display: none;
+}
+
+
+/* ── Theme toggle ── */
+
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 60;
+}
+
+.theme-toggle-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-glass-border);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+}
+
+.theme-toggle-button:hover {
+  background: var(--color-navigation-active-background);
+  color: var(--color-text-primary);
+  transform: scale(1.12);
+}
+
+
+/* ── Hero ── */
+
+#hero {
+  min-height: 100vh;
+  scroll-margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 64px;
+}
+
+.hero-wrapper {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero-avatar-wrapper {
+  margin-bottom: 1.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-tagline {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.18);
+}
+
+.hero-role {
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero-social-links {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.hero-scroll {
+  margin-top: 3rem;
+}
+
+.scroll-hint {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 7rem;
+  height: 3rem;
+  text-decoration: none;
+}
+
+.scroll-hint-icon,
+.scroll-hint-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-hint-icon {
+  font-size: 2rem;
+  animation: scroll-icon-bounce 4s ease-in-out infinite;
+}
+
+.scroll-hint-label {
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: scroll-text-fade 4s ease-in-out infinite;
+}
+
+
+/* ── Split layout ── */
+
+#split-view {
+  display: flex;
+  align-items: flex-start;
+}
+
+#about {
+  width: 38%;
+  flex-shrink: 0;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 3rem 2.5rem 2rem;
+}
+
+#about .about-inner {
+  width: 100%;
+}
+
+.about-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 0.5rem;
+}
+
+.about-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.about-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.about-detail {
+  font-size: 0.75rem;
+  margin-top: 0.125rem;
+}
+
+.about-text {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.about-text:last-child {
+  margin-bottom: 0;
+}
+
+.about-inner .glass-card {
+  margin-top: 1.5rem;
+}
+
+.statistic-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+
+/* ── Right panel ── */
+
+#right-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-section {
+  scroll-margin-top: 64px;
+}
+
+#right-panel .page-section {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 3rem 0;
+}
+
+#right-panel .page-section > .section-title,
+#right-panel .page-section > .contact-intro {
+  width: 100%;
+  max-width: 48rem;
+  padding: 0 1rem;
+}
+
+.section-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
