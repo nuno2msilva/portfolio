@@ -174,7 +174,6 @@ footer {
 }
 
 /* Border transition on theme switch */
-#about,
 .site-footer {
   transition: border-color 0.3s ease;
 }
@@ -361,7 +360,6 @@ footer {
   width: 88px;
   height: 88px;
   border-radius: 50%;
-  flex-shrink: 0;
   justify-self: center;
   background: radial-gradient(circle at 36% 32%,
     rgba(255,255,255,0.45), rgba(52,211,153,0.45) 50%, rgba(6,182,212,0.35));
@@ -825,11 +823,10 @@ footer {
   top: 64px;
   height: calc(100vh - 64px);
   overflow-y: auto;
-  border-right: 1px solid var(--color-card-border);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 2rem 2.5rem;
+  justify-content: flex-start;
+  padding: 3rem 2.5rem 2rem;
 }
 
 #about .about-inner {
@@ -847,7 +844,6 @@ footer {
 .about-info {
   display: flex;
   flex-direction: column;
-  flex: 1;
   min-width: 0;
   gap: 0.5rem;
 }
@@ -954,7 +950,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 3rem 0;
 }
 
@@ -966,6 +962,10 @@ footer {
 }
 
 .section-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   max-width: 48rem;
   margin: 0 auto;
@@ -1388,6 +1388,13 @@ footer {
   #right-panel .page-section > .contact-intro {
     padding: 0 2rem;
   }
+
+  #about .about-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 
@@ -1428,23 +1435,19 @@ footer {
 
   #about {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     width: 100%;
     position: static;
     top: auto;
-    height: auto;
-    overflow-y: visible;
-    border-right: none;
+    height: 100svh;
     padding: 0 1rem 1rem;
-    justify-content: flex-start;
   }
 
   #about .about-inner {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
     width: 100%;
-    padding-bottom: 4rem;
   }
 
   #about .about-inner .glass-card {
@@ -1570,6 +1573,7 @@ footer {
   }
 
   #right-panel .page-section {
+    min-height: 100svh;
     padding: 0 1rem 1.5rem;
     justify-content: flex-start;
   }
@@ -1582,10 +1586,6 @@ footer {
   }
 
   #right-panel .page-section .section-inner {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding: 0;
     width: 100%;
     margin-top: 0.5rem;
