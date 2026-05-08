@@ -79,7 +79,7 @@
         <div class="hero-header">
           <div class="hero-avatar-wrapper">
             <div class="avatar-ring">
-              <div class="avatar-size-large avatar-orb">
+              <div class="avatar-large avatar-orb">
                 <img src="https://github.com/nuno2msilva.png" alt="Nuno Silva" class="avatar-photo">
               </div>
             </div>
@@ -128,23 +128,25 @@
          Desktop : sticky left sidebar
          Mobile  : full-width scrollable section  -->
     <aside id="about" class="page-section">
-      <h2 class="section-title sidebar-title">About Me</h2>
+      <h2 class="section-title">About Me</h2>
       <div class="about-inner">
 
         <div class="glass-card">
           <div class="about-header">
-            <div class="about-avatar">
+            <div class="avatar-small">
               <img src="https://github.com/nuno2msilva.png" alt="Nuno Silva" class="avatar-photo">
             </div>
-            <div class="about-metadata">
-              <p class="about-name text-primary">Nuno Silva</p>
-              <p class="about-detail text-accent-green"><i class="fas fa-map-marker-alt"></i> Faro, Portugal</p>
-              <p class="about-detail text-muted">Open to remote &amp; hybrid</p>
-            </div>
-            <div class="about-links">
-              <a href="https://github.com/nuno2msilva" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="mailto:nmsilva164@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <div class="about-info">
+              <div class="about-metadata">
+                <p class="about-name text-primary">Nuno Silva</p>
+                <p class="about-detail text-accent-green"><i class="fas fa-map-marker-alt"></i> Faro, Portugal</p>
+                <p class="about-detail text-muted">Open to remote &amp; hybrid</p>
+              </div>
+              <div class="about-links">
+                <a href="https://github.com/nuno2msilva" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:nmsilva164@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+              </div>
             </div>
           </div>
           <p class="about-text text-secondary">
@@ -158,7 +160,7 @@
           </p>
         </div>
 
-        <div class="statistics-row">
+        <div class="statistic-row">
           <div class="statistic-bubble"><span class="statistic-number">1+</span><span class="statistic-label">Dev Year</span></div>
           <div class="statistic-bubble"><span class="statistic-number">18+</span><span class="statistic-label">Repos</span></div>
           <div class="statistic-bubble"><span class="statistic-number">7+</span><span class="statistic-label">Pro Years</span></div>
@@ -409,35 +411,24 @@
           <div class="glass-card contact-card">
 
             <form id="contact-form" novalidate>
-              <div class="contact-unavailable">
-                <span>Temporarily Unavailable</span>
-              </div>
 
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="field-name">Name</label>
-                  <input id="field-name" type="text" name="name" class="form-input" placeholder="Your name" disabled>
-                  <span class="form-error" id="error-name">Please enter your name.</span>
+                  <input id="field-name" type="text" name="name" class="form-input" placeholder="Your name">
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="field-email">Email</label>
-                  <input id="field-email" type="email" name="email" class="form-input" placeholder="your@email.com" disabled>
-                  <span class="form-error" id="error-email">Please enter a valid email.</span>
+                  <input id="field-email" type="email" name="email" class="form-input" placeholder="your@email.com">
                 </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="field-subject">Subject</label>
-                <input id="field-subject" type="text" name="subject" class="form-input" placeholder="What's this about?" disabled>
               </div>
 
               <div class="form-group">
                 <label class="form-label" for="field-message">Message</label>
-                <textarea id="field-message" name="message" rows="3" class="form-input form-textarea" placeholder="Tell me about your project or opportunity..." disabled></textarea>
-                <span class="form-error" id="error-message">Please write a message.</span>
+                <textarea id="field-message" name="message" rows="3" class="form-input form-textarea" placeholder="Tell me about your project or opportunity..."></textarea>
               </div>
 
-              <button type="submit" id="submit-button" class="glossy-button-primary submit-button" disabled>
+              <button type="submit" id="submit-button" class="glossy-button-primary submit-button">
                 <i class="fas fa-paper-plane"></i> Send Message
               </button>
             </form>
@@ -455,6 +446,7 @@
     <p class="text-muted">© 2026 Nuno Silva &mdash; Designed &amp; built with care</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
