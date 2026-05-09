@@ -30,9 +30,10 @@ function initFooter() {
     let shouldShow;
 
     if (isMobile && contact) {
-      shouldShow = window.scrollY >= contact.offsetTop - window.innerHeight * 0.5;
+      // Show only when the contact section's top edge is within the viewport
+      shouldShow = contact.getBoundingClientRect().top <= window.innerHeight * 0.5;
     } else {
-      shouldShow = window.scrollY > hero.offsetTop + hero.offsetHeight * 0.5;
+      shouldShow = window.scrollY > hero.getBoundingClientRect().top + window.scrollY + hero.offsetHeight * 0.5;
     }
 
     footer.classList.toggle('visible', shouldShow);
@@ -56,7 +57,8 @@ function initActiveNav() {
     let activeId = scrollables[0]?.id ?? '';
 
     scrollables.forEach(section => {
-      if (window.scrollY >= section.offsetTop - 130) activeId = section.id;
+      const absTop = section.getBoundingClientRect().top + window.scrollY;
+      if (window.scrollY >= absTop - 130) activeId = section.id;
     });
 
     if (activeId === 'about' && window.innerWidth >= 1024) activeId = 'hero';
