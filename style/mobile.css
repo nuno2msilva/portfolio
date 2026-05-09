@@ -35,7 +35,7 @@
   }
 
   /* Hero starts at y=0 so it gets the full viewport, no offset needed */
-  #hero { min-height: 100svh; }
+  #hero { min-height: 100vh; min-height: 100svh; }
 
   /* Flatten split-view hierarchy so all page-sections are flat scroll-snap siblings.
      display: contents removes the box but keeps DOM/CSS selectors intact. */
@@ -80,6 +80,7 @@
     width: 100%;
     position: static;
     top: auto;
+    height: calc(100vh - 64px);
     height: calc(100svh - 64px);
     overflow: hidden;
     padding: 0 1rem 2rem;
@@ -119,6 +120,7 @@
 
   /* calc(100svh-64px) = exact visible height below the fixed navbar */
   #right-panel .page-section {
+    min-height: calc(100vh - 64px);
     min-height: calc(100svh - 64px);
     padding: 0 1rem 1.5rem;
   }
@@ -146,6 +148,7 @@
   }
 
   .hero-wrapper {
+    min-height: calc(100vh - 88px);
     min-height: calc(100svh - 88px);
     display: flex;
     flex-direction: column;
@@ -288,6 +291,7 @@
 
   /* Fixed to visible height — clip overflow so one swipe reaches Contact */
   #experience {
+    height: calc(100vh - 64px);
     height: calc(100svh - 64px);
     overflow: hidden;
   }
@@ -414,6 +418,7 @@
   }
 
   #contact {
+    height: calc(100vh - 64px);
     height: calc(100svh - 64px);
     overflow: hidden;
   }
