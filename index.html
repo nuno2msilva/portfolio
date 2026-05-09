@@ -32,6 +32,12 @@
 
 <body>
 
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button id="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="Project screenshot">
+  </div>
+
   <!-- ══════════════════════════════════════════
        NAVBAR
        ══════════════════════════════════════════ -->
@@ -42,7 +48,7 @@
         <!-- Logo: full name on desktop, initials on mobile -->
         <a href="#hero" class="navigation-logo text-primary">
           <span class="desktop-name">Nuno Silva</span>
-          <span class="mobile-name">NS</span>
+          <span class="mobile-name">N. Silva</span>
         </a>
 
         <!-- Desktop nav: icon + label links -->
@@ -168,9 +174,9 @@
         </div>
 
         <div class="statistic-row">
-          <div class="statistic-bubble"><span class="statistic-number">1+</span><span class="statistic-label">Dev Year</span></div>
-          <div class="statistic-bubble"><span class="statistic-number">18+</span><span class="statistic-label">Repos</span></div>
-          <div class="statistic-bubble"><span class="statistic-number">7+</span><span class="statistic-label">Pro Years</span></div>
+          <div class="statistic-bubble glass-card"><span class="statistic-number">1+</span><span class="statistic-label">Dev Year</span></div>
+          <div class="statistic-bubble glass-card"><span class="statistic-number">18+</span><span class="statistic-label">Repos</span></div>
+          <div class="statistic-bubble glass-card"><span class="statistic-number">7+</span><span class="statistic-label">Pro Years</span></div>
         </div>
 
       </div>
@@ -267,8 +273,7 @@
           <div class="two-column-grid">
 
             <div class="project-card glass-card">
-              <div class="project-banner" style="background:linear-gradient(135deg,#059669,#0d9488)">
-                <i class="fas fa-clone project-banner-icon"></i>
+              <div class="project-banner" data-image="media/dupligone.jpg" style="background:#0d2e1a url('media/dupligone.jpg') center/cover no-repeat">
               </div>
               <div class="project-body">
                 <a href="https://github.com/nuno2msilva/dupligone" target="_blank" class="project-title text-primary"><i class="fab fa-github"></i>Dupligone</a>
@@ -278,8 +283,7 @@
             </div>
 
             <div class="project-card glass-card">
-              <div class="project-banner" style="background:linear-gradient(135deg,#3b82f6,#6366f1)">
-                <i class="fas fa-wallet project-banner-icon"></i>
+              <div class="project-banner" data-image="media/pocketkeeper.jpg" style="background:#0d1a2e url('media/pocketkeeper.jpg') center/cover no-repeat">
               </div>
               <div class="project-body">
                 <a href="https://github.com/nuno2msilva/pocket-keeper" target="_blank" class="project-title text-primary"><i class="fab fa-github"></i>Pocket Keeper</a>
@@ -289,8 +293,7 @@
             </div>
 
             <div class="project-card glass-card">
-              <div class="project-banner" style="background:linear-gradient(135deg,#0891b2,#3b82f6)">
-                <i class="fas fa-bowl-rice project-banner-icon"></i>
+              <div class="project-banner" data-image="media/sushidash.jpg" style="background:#0d1e2e url('media/sushidash.jpg') center/cover no-repeat">
               </div>
               <div class="project-body">
                 <a href="https://github.com/nuno2msilva/etic-pw2426-frontend2-projeto" target="_blank" class="project-title text-primary"><i class="fab fa-github"></i>SushiDash</a>
@@ -300,14 +303,13 @@
             </div>
 
             <div class="project-card glass-card">
-              <div class="project-banner" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">
-                <i class="fas fa-chart-pie project-banner-icon"></i>
+              <div class="project-banner" data-image="media/subhub.jpg" style="background:#1a1a2e url('media/subhub.jpg') center/cover no-repeat">
               </div>
               <div class="project-body">
-                <a href="https://github.com/nuno2msilva/monthly-expense-tracker" target="_blank" class="project-title text-primary"><i class="fab fa-github"></i>Monthly Expense Tracker</a>
-                <span class="project-status-tag">Personal · Finance</span>
+                <a href="https://github.com/Pedrocrlx/SubHub" target="_blank" class="project-title text-primary"><i class="fab fa-github"></i>SubHub</a>
+                <span class="project-status-tag">FastAPI · Docker</span>
               </div>
-              <p class="project-description text-secondary">A no-fluff tool for tracking and categorising monthly spending — built because the alternatives were either overkill or ugly.</p>
+              <p class="project-description text-secondary">Subscription management app that tracks and totals monthly spending. FastAPI + PostgreSQL backend, containerised with Docker — built as a team collaboration.</p>
             </div>
 
           </div>
@@ -448,6 +450,7 @@
   <script src="scripts/scroll.js"></script>
   <script src="scripts/interactions.js"></script>
   <script src="scripts/contact.js"></script>
+  <script src="scripts/lightbox.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 </html>

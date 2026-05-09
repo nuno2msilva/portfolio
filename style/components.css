@@ -35,14 +35,6 @@
   pointer-events: none;
 }
 
-/* statistic-bubble uses 55% height for a stronger crescent */
-.statistic-bubble::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 55%;
-  pointer-events: none;
-}
 
 
 /* ── Avatar ── */
@@ -224,27 +216,13 @@
 
 /* ── Statistic bubbles ── */
 
+/* Visual style from glass-card; this class adds only layout */
 .statistic-bubble {
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
-  border-radius: 1.125rem;
-  padding: 0.875rem 0.375rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.5s ease;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.20), 0 4px 16px rgba(0,0,0,0.12);
-}
-
-.statistic-bubble::before {
-  background: linear-gradient(to bottom,
-    rgba(255,255,255,0.28) 0%,
-    rgba(255,255,255,0.06) 60%,
-    transparent 100%);
-  border-radius: 1.125rem 1.125rem 0 0;
+  padding: 0.875rem 0.375rem;
 }
 
 .statistic-number {
@@ -415,6 +393,12 @@
 /* ── Projects ── */
 
 .project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "banner body"
+    "desc   desc";
+  padding: 0;
   overflow: hidden;
   transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
@@ -425,12 +409,14 @@
 }
 
 .project-banner {
+  grid-area: banner;
   position: relative;
   overflow: hidden;
-  height: 10rem;
+  min-height: 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .project-banner::before {
@@ -451,15 +437,19 @@
 }
 
 .project-body {
-  padding: 1.25rem 1.25rem 0.5rem;
+  grid-area: body;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .project-description {
+  grid-area: desc;
   font-size: 0.75rem;
   line-height: 1.6;
-  padding: 0 1.25rem 1.25rem;
+  padding: 0.75rem 1.25rem 1.25rem;
+  text-align: center;
 }
 
 
@@ -626,3 +616,59 @@
 }
 
 .site-footer p { font-size: 0.875rem; }
+
+
+/* ── Lightbox ── */
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.60);
+  display: block;
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(1.1);
+}

@@ -77,7 +77,7 @@
     width: 100%;
     position: static;
     top: auto;
-    height: 100svh;
+    height: calc(100svh - 64px);
     overflow: hidden;
     padding: 0 1rem 1rem;
   }
@@ -97,9 +97,9 @@
 
   /* ── Right-panel sections ── */
 
-  /* Overrides base: calc(100vh-64px) min-height, padding: 3rem 0 */
+  /* calc(100svh-64px) = exact visible height below the fixed navbar */
   #right-panel .page-section {
-    min-height: 100svh;
+    min-height: calc(100svh - 64px);
     padding: 0 1rem 1.5rem;
   }
 
@@ -110,21 +110,17 @@
     padding: 0;
   }
 
-  /* Natural height + auto margins reliably centres within the flex column */
+  /* flex:1 fills space below title; definite section height makes justify-content:center work */
   #right-panel .page-section .section-inner {
-    flex: none;
+    flex: 1;
     padding: 0;
-    margin-top: auto;
-    margin-bottom: auto;
   }
 
   /* ── Hero ── */
 
   #hero {
-    position: relative;
     justify-content: flex-start;
     padding-top: 88px;
-    min-height: 100svh;
   }
 
   .hero-wrapper {
@@ -132,7 +128,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
   }
 
   .hero-content {
@@ -226,29 +221,11 @@
 
   /* ── Projects ── */
 
-  /* Left half: horizontal banner. Right half: title + tech. Bottom: description. */
-  .project-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "banner body"
-      "desc   desc";
-    padding: 0;
-  }
-
-  .project-banner {
-    grid-area: banner;
-    height: 100%;
-    min-height: 5.5rem;
-    border-radius: 0;
-  }
+  /* Grid structure and 1fr 1fr split inherited from base; only banner height differs */
+  .project-banner  { min-height: 5.5rem; }
 
   .project-body {
-    grid-area: body;
     padding: 0.65rem 0.75rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     min-width: 0;
   }
 
@@ -268,7 +245,6 @@
   }
 
   .project-description {
-    grid-area: desc;
     font-size: 0.71rem;
     line-height: 1.45;
     padding: 0.4rem 0.75rem 0.65rem;
@@ -276,9 +252,9 @@
 
   /* ── Experience ── */
 
-  /* Taller than one viewport — clip to 100svh so one swipe reaches Contact */
+  /* Fixed to visible height — clip overflow so one swipe reaches Contact */
   #experience {
-    height: 100svh;
+    height: calc(100svh - 64px);
     overflow: hidden;
   }
 
@@ -293,7 +269,7 @@
   #experience .timeline-organisation { font-size: 0.74rem; }
 
   #experience .timeline-description {
-    font-size: 0.70rem;
+    font-size: 0.80rem;
     line-height: 1.45;
     margin-bottom: 0.3rem;
   }

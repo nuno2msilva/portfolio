@@ -20,4 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractions();
   initContactForm();
   initAnchorScroll();
+  initLightbox();
 });
