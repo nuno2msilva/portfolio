@@ -27,11 +27,14 @@
   }
 
   /* Hard-lock every section to exactly one screen height — no in-section scrolling.
-     vh fallback → svh for browsers that support it → dvh tracks the address bar. */
+     vh fallback → svh for browsers that support it → dvh tracks the address bar.
+     min-height: 0 cancels layout.css overrides that would make sections taller than
+     one screen, breaking scroll-snap. */
   .page-section {
     scroll-snap-align: start;
     scroll-snap-stop: always;
     scroll-margin-top: 0;
+    min-height: 0;
     height: calc(100vh - 64px);
     height: calc(100svh - 64px);
     height: calc(100dvh - 64px);
@@ -39,7 +42,12 @@
   }
 
   /* Hero starts at y=0 so it gets the full viewport, no navbar offset */
-  #hero { height: 100vh; height: 100svh; height: 100dvh; }
+  #hero {
+    min-height: 0;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+  }
 
   /* Flatten split-view hierarchy so all page-sections are flat scroll-snap siblings.
      display: contents removes the box but keeps DOM/CSS selectors intact. */
@@ -135,8 +143,9 @@
 
   /* ── Right-panel sections ── */
 
-  /* Height and overflow inherited from .page-section — only padding override needed */
+  /* Cancels layout.css min-height: calc(100vh - 64px) which would override our height */
   #right-panel .page-section {
+    min-height: 0;
     padding: 0 1rem 2.5rem;
     padding: 0 1rem clamp(0.75rem, 4dvh, 2.5rem);
   }
